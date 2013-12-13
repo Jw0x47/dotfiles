@@ -1,0 +1,6 @@
+[alias]
+[format]
+  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+[user]
+  name = Jonathan Goodwin
+  email = jgoodwin@dataxu.com
