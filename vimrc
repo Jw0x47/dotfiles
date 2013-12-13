@@ -101,6 +101,9 @@ else
 endif
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
+highlight Normal ctermbg=NONE
+highlight LineNr ctermfg=yellow
+
 
 " Numbers
 set number
