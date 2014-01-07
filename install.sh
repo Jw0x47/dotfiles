@@ -56,7 +56,8 @@ then
   brew install \
     wget \
     fortune \
-    cowsay
+    cowsay \
+    vim
 
   # Check if puppet is installed
   which puppet &> /dev/null
