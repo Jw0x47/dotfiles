@@ -94,7 +94,7 @@ endif
 syntax enable
 colorscheme solarized
 if has('gui_running')
-    set background=light
+    set background=dark
 else
     set background=dark
 endif
@@ -103,6 +103,10 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 highlight Normal ctermbg=NONE
 highlight LineNr ctermfg=green
 
+if &term =~ '^xterm'
+  let &t_SI .= "\<Esc>[4 q"
+  let &t_EI .= "\<Esc>[2 q"
+endif
 
 " Numbers
 set number
