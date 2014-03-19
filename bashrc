@@ -9,7 +9,7 @@ function git_prompt_info() {
   if [[ -n $ref ]]; then
     # Zsh prompt this was based on
     # echo "[%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}]"
-    echo "[$(tput setaf 2)$ref$(tput sgr0)]"
+    echo "[$(tput setaf 1)$ref$(tput sgr0)]"
   fi
 }
 
