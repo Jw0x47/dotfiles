@@ -14,8 +14,11 @@ Install
 -------
 
 ./install.sh
+
+
 # Apps that I use
 * Iterm2 (terminal emulator)
+  * i2cssh
 * Spectacle (window manager)
 * Cloudapp (cloud copy paste)
 * Alfred (spotlight on 'roids)

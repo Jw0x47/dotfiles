@@ -42,12 +42,13 @@ export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
 
 # ignore duplicate history entries
 setopt histignoredups
+setopt inc_append_history
+setopt share_history
 
 # keep TONS of history
 export HISTSIZE=4096
-
-# look for ey config in project dirs
-export EYRC=./.eyrc
+export SAVEHIST=1000
+export HISTFILE=~/.zsh_history
 
 # automatically pushd
 setopt auto_pushd
