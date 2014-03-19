@@ -157,6 +157,8 @@ nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
+" ConqueTerm
+let g:ConqueTerm_Color = 1
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
