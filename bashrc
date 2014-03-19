@@ -19,3 +19,9 @@ function git_prompt_info() {
 
 # Final Prompt; pre-appending git prompt data
 export PS1="\$(git_prompt_info)$PS1"
+
+
+###########
+# Aliases #
+###########
+alias ls="ls --color=auto"
