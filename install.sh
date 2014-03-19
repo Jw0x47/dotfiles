@@ -7,6 +7,19 @@ else
   exit 1
 fi
 
+function gem_install () {
+  program=$1
+  echo Starting install of $program
+  where=$(which $program | head -c 1)
+  if [ $where == '/' ]
+  then
+    echo "$(tput setaf 2)Success:$(tput sgr 0) $program already installed!";
+  else
+    sudo gem install $program
+  fi
+
+}
+
 ##########################################
 # Macs need things (they're also Darwin) #
 ##########################################
@@ -25,6 +38,7 @@ if [ $(uname) == 'Darwin' ];then
   fi
 
   # Then install our shits
+  # we let these error / update
   brew install \
     wget \
     fortune \
@@ -32,13 +46,14 @@ if [ $(uname) == 'Darwin' ];then
     vim # Yes we install vim... basically the vim that ships on macos doesn't support my dotfiles (ansible)
 
   # Check if puppet is installed
-  if which puppet &> /dev/null; then echo "$(tput setaf 2)Success:$(tput sgr 0) puppet already installed!" ;else gem install puppet; fi
+  gem_install 'puppet'
+  gem_install 'i2cssh'
 fi
 
 #####################
 # OS Neutral Things #
 #####################
-if which puppet-lint &> /dev/null; then echo "$(tput setaf 2)Success:$(tput sgr 0) puppet-lint already installed!" ;else gem install puppet-lint; fi
+gem_install 'puppet-lint'
 
 
 # Install Dotfiles
@@ -48,5 +63,6 @@ ls |grep -v install | xargs -I {} rm -rf ~/.{}
 ls |grep -v install | xargs -I {} ln -s $(pwd)/{} ~/.{}
 
 # Install all bundles (vim bundler)
+echo 'Vim Bundle Install'
 vim +BundleInstall +qall
-
+echo Done...
