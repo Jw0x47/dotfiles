@@ -1,81 +1,52 @@
 #!/bin/bash
-# our working dir..
-wd=`pwd`
 
-if [ "$wd" == "$HOME/.dotfiles" ]
-then
+if [ $(pwd) == "$HOME/.dotfiles" ];then
   echo "Starting .... "
 else
-  echo "FAILURE: Execute this from within your .dotfiles filder in $HOME"
+  echo "$(tput setaf 1)FAILURE:$(tput sgr 0) Execute this from within your .dotfiles folder in $HOME/./dotfiles"
   exit 1
 fi
 
-## TOTAL BULLSHIT !!!
-#brew tap mike-burns/rcm
-#brew install rcm
-#rcup -d ~/.dotfiles -x README.md -x LICENSE
-
-# Fuck that noise;
-# HERE WE GOOO
-
-if [ $# -ne 0 ]
-then
-  if [ $# -ne 1 ]
-  then
-    echo "FAILURE: Execute with MAC to deploy to Mac, otherwise leave blank"
-    exit 1
-  else
-    OS=$1
-  fi
-else
-  if [ "$OSTYPE" != "Linux-Gnu" ]
-  then
-    echo "This isn't a *nix system; or its a mac and you didn't say so. Try again with:          \`./install.sh MAC\`          Or you could fuck off."
-    exit 1
-  else
-     OS='LINUX'
-  fi
-fi
-
-####################
-# Macs need things #
-####################
-if [ "$OS" == 'MAC' ]
-then
-
+##########################################
+# Macs need things (they're also Darwin) #
+##########################################
+if [ $(uname) == 'Darwin' ];then
   # Check if Brew is installed
   # If its not... install brew stuff
-  brew -h &> /dev/null
-  if [ $? -ne 0 ]
-  then
-    echo "no brew; installing homebrew"
+
+  if brew -h &> /dev/null; then
+    echo "$(tput setaf 2)Success:$(tput sgr 0) Homebrew already installed!"
+  else
+    echo "$(tput setaf 1)Warning:$(tput sgr 0) No brew; installing Homebrew..."
     # Install homebrew
+    set -x
     ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+    set +x
   fi
-  # We can always do this because it will just say "warning" if they're there
+
+  # Then install our shits
   brew install \
     wget \
     fortune \
     cowsay \
-    vim
+    vim # Yes we install vim... basically the vim that ships on macos doesn't support my dotfiles (ansible)
 
   # Check if puppet is installed
-  which puppet &> /dev/null
-  if [ $? -ne 0 ]
-  then
-    gem install puppet
-  fi
+  if which puppet &> /dev/null; then echo "$(tput setaf 2)Success:$(tput sgr 0) puppet already installed!" ;else gem install puppet; fi
 fi
 
-# Puppet lint is cool
-which puppet-lint &> /dev/null
-if [ $? -ne "0" ]
-then
-  gem install puppet-lint
-fi
+#####################
+# OS Neutral Things #
+#####################
+if which puppet-lint &> /dev/null; then echo "$(tput setaf 2)Success:$(tput sgr 0) puppet-lint already installed!" ;else gem install puppet-lint; fi
+
+
+# Install Dotfiles
+# Remove any dotfiles that we're clobbering
+ls |grep -v install | xargs -I {} rm -rf ~/.{}
+# Link in our own over those
+ls |grep -v install | xargs -I {} ln -s $(pwd)/{} ~/.{}
 
 # Install all bundles (vim bundler)
-ls |grep -v install | xargs -I {} rm -f ~/.{}
-ls |grep -v install | xargs -I {} ln -s $wd/{} ~/.{}
 vim +BundleInstall +qall
 
