@@ -21,4 +21,5 @@ export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$f
 
 # load thoughtbot/dotfiles scripts
 export PATH="$HOME/.bin:$PATH"
+daily
 welcome
