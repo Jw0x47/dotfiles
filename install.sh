@@ -52,7 +52,7 @@ function gem_install () {
   program=$1
   echo Starting install of $program
   where=$(which $program | head -c 1)
-  if [ $where == '/' ]
+  if [ "$where" == '/' ]
   then
     echo "$(tput setaf 2)Success:$(tput sgr 0) $program already installed!";
   else
