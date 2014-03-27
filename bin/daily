@@ -1,9 +1,13 @@
 #!/bin/bash
 
+
+
+
+
 function run_brew_update() {
   echo -n 'Brew update not run in 24 hours run brew update now? [y/n] '
   read ans
-  if [ 'y' == "$ans" ]
+  if [ "$ans" == 'y' ]
   then
     echo running brew update
     brew update
@@ -18,10 +22,10 @@ function run_brew_update() {
 
 }
 
-if $(find ~/.dotfiles/bin -name 'daily.brew' -mmin +1440)
+if [ "$(find ~/.dotfiles/bin -name 'daily.brew' -mmin +1440 |wc -l)" -eq '0' ]
 then
-  exit 0
-else
   run_brew_update
+else
+  exit 0
 fi
 
