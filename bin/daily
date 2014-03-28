@@ -22,7 +22,7 @@ function run_brew_update() {
 
 }
 
-if [ "$(find ~/.dotfiles/bin -name 'daily.brew' -mmin +1440 |wc -l)" -eq '0' ]
+if [ "$(find ~/.dotfiles/bin -name 'daily.brew' -mmin +1440 |wc -l)" -eq '1' ]
 then
   run_brew_update
 else

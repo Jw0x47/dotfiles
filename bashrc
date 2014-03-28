@@ -24,4 +24,9 @@ export PS1="\$(git_prompt_info)$PS1"
 ###########
 # Aliases #
 ###########
-alias ls="ls --color=auto"
+if [ $(uname) == 'Darwin' ];then
+  alias ls="ls -G"
+else
+  alias ls="ls --color=auto"
+fi
+
