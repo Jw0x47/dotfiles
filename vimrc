@@ -157,8 +157,6 @@ nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
-" ConqueTerm
-let g:ConqueTerm_Color = 1
 
 " Remove trailing whitespace when a file is saved
 " Source: <http://vim.wikia.com/wiki/Remove_unwanted_spaces>
