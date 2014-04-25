@@ -25,7 +25,7 @@ gems_list = ['puppet',
 # Symlinks in dotfiles
 def installDotfiles():
 
-    home = '..'
+    home = '~'
     files_dir = os.getcwd()
     invalid_files_list = [".git",
                           "install.py"]
