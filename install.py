@@ -42,11 +42,12 @@ def installDotfiles():
 install emacs packages
 '''
 def installEmacsPackages(package_list):
-    app = installEmacs()
+    proc = subprocess.Popen("/Applications/Emacs.app/Contents/MacOS/Emacs --batch -l ~/.dotfiles/emacs.packages --eval=\"(list-packages)\"", stdout=subprocess.PIPE, shell=True)
+    proc.wait()
     for each in package_list:
         print "Installing emacs package: %s" % each
         app = "/Applications/Emacs.app/Contents/MacOS/Emacs"
-        flag = '--batch -l ~/.emacs'
+        flag = '--batch -l ~/.dotfiles/emacs.packages'
         expr = "--eval=\"(package-install '%s)\"" % (each)
         argsarray = [app, flag, expr]
         print ' '.join(argsarray)
@@ -115,10 +116,10 @@ def main():
         if OS in mac_os:
             installHomebrewCrap(homebrew_list)
         installDotfiles()
-    if args.emacs:
-         installEmacsPackages(emacs_package_list)
-    if args.gems:
-        installGems(gems_list, args.sudo)
+    	if args.emacs:
+    	     installEmacsPackages(emacs_package_list)
+    	if args.gems:
+    	    installGems(gems_list, args.sudo)
     else:
         print 'Exiting per user command'
         sys.exit(0)
