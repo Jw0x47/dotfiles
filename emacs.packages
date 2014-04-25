@@ -1,0 +1,10 @@
+;;; PACKAGES
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
+(defun add-to-load-path (x)
+  (add-to-list 'load-path (concat "~/.emacs.d/" x)))
