@@ -15,7 +15,7 @@ linux_os = ['not Darwin']
 emacs_package_list = ['rainbow-mode',
                       'evil',
                       'evil-matchit',
-                      'evil-surround']
+                      'solarized-theme']
 homebrew_list = ['wget',
                  'fortune']
 gems_list = ['puppet',
