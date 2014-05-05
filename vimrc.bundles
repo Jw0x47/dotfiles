@@ -26,7 +26,8 @@ Bundle 'vim-scripts/tComment'
 Bundle 'chase/vim-ansible-yaml'
 "snippets
 Bundle 'msanders/snipmate.vim'
-Bunlde 'mitechie/pyflakes-pathogen'
+Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'vim-scripts/pep8'
 
 
 if filereadable(expand("~/.vimrc.bundles.local"))

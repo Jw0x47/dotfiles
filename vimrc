@@ -26,6 +26,9 @@ endif
 filetype on
 filetype plugin indent on
 
+" map key for pep8 check; default is F5
+let g:pep8_map='<C-g>'
+
 augroup vimrcEx
   autocmd!
 
@@ -159,10 +162,6 @@ nnoremap <C-l> <C-w>l
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 
-" ConqueTerm
-let g:ConqueTerm_FastMode = 2
-let g:ConqueTerm_TERM = 'xterm-256color'
-
 " Remove trailing whitespace when a file is saved
 " Source: <http://vim.wikia.com/wiki/Remove_unwanted_spaces>
 function! TrimWhiteSpace()
@@ -181,8 +180,3 @@ autocmd! FileWritePre * :call TrimWhiteSpace()
 autocmd! FileAppendPre * :call TrimWhiteSpace()
 autocmd! FilterWritePre * :call TrimWhiteSpace()
 autocmd! BufWritePre * :call TrimWhiteSpace()
-
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif

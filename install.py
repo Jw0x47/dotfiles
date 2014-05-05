@@ -6,8 +6,6 @@ import argparse
 import sys
 import os
 import subprocess
-import time
-import pdb
 
 # Global Variables and lists of crap
 mac_os = ['Darwin']
@@ -22,6 +20,7 @@ gems_list = ['puppet',
              'puppet-lint',
              'i2cssh']
 
+
 # Symlinks in dotfiles
 def installDotfiles():
 
@@ -30,19 +29,27 @@ def installDotfiles():
     invalid_files_list = [".git",
                           "install.py"]
 
-    for each in os.listdir('.'):
+    for each in os.listdir(files_dir):
         if each not in invalid_files_list:
             target = home+'/.'+each
             try:
                 os.symlink(os.getcwd()+'/'+each, target)
             except OSError as e:
-                print "OS error(%i): %s on file: %s" % (e.errno, e.strerror, target)
+                print "OS error(%i): %s on file: %s" % (e.errno,
+                                                        e.strerror,
+                                                        target)
 
-'''
-install emacs packages
-'''
+
+# install emacs packages
 def installEmacsPackages(package_list):
-    proc = subprocess.Popen("/Applications/Emacs.app/Contents/MacOS/Emacs --batch -l ~/.dotfiles/emacs.packages --eval=\"(list-packages)\"", stdout=subprocess.PIPE, shell=True)
+    command_array = ["/Applications/Emacs.app/Contents/MacOS/Emacs",
+                     "--batch",
+                     "-l",
+                     "~/.dotfiles/emacs.packages",
+                     "--eval=\"(list-packages)\""]
+    proc = subprocess.Popen(' '.join(command_array),
+                            stdout=subprocess.PIPE,
+                            shell=True)
     proc.wait()
     for each in package_list:
         print "Installing emacs package: %s" % each
@@ -51,14 +58,13 @@ def installEmacsPackages(package_list):
         expr = "--eval=\"(package-install '%s)\"" % (each)
         argsarray = [app, flag, expr]
         print ' '.join(argsarray)
-        proc = subprocess.Popen(' '.join(argsarray), stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(' '.join(argsarray),
+                                stdout=subprocess.PIPE,
+                                shell=True)
         proc.wait()
 
 
-'''
-Installs gems;
-Only want to call this on MacOs
-'''
+# Installs gems; Only want to call this on MacOs
 def installGems(gem_list, sudo):
     for gem in gem_list:
         args = ['gem',
@@ -86,28 +92,26 @@ def installHomebrewCrap(homebrew_list):
     brew = subprocess.call('brew -h &> /dev/null', shell=True)
     if brew != 0:
         print 'installing homebrew'
-     # install brew
-        curl = '"$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"'
+        # install brew
+        c = '"$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"'
         proc = subprocess.Popen('ruby',
                                 '-e',
-                                curl)
+                                c)
         proc.wait()
     else:
         print 'Brew already installed'
 
     # Install programs
-    proc = subprocess.Popen(['brew', 'install' ] + homebrew_list,
+    proc = subprocess.Popen(['brew', 'install'] + homebrew_list,
                             stdout=subprocess.PIPE)
     proc.wait()
     print proc.stdout.read()
 
 
-'''
-Handles crap like figuring out which things to install/what os we're on etc.
-'''
+# Handles crap like figuring out which things to install/what os we're on etc.
 def main():
     OS = subprocess.Popen('uname',
-                              stdout=subprocess.PIPE).stdout.read().strip()
+                          stdout=subprocess.PIPE).stdout.read().strip()
     print "OS detected as: %s" % OS
     con_text = "Do you really want to blow away your old dotfiles? "
     confirmation = raw_input(con_text)
@@ -118,7 +122,7 @@ def main():
         installDotfiles()
         if args.emacs:
             print "NO FUCK YOU NO EMACS HERE"
-             # installEmacsPackages(emacs_package_list)
+            # installEmacsPackages(emacs_package_list)
         if args.gems:
             installGems(gems_list, args.sudo)
     else:
@@ -138,11 +142,11 @@ if __name__ == '__main__':
                         action="store_true")
 
     parser.add_argument("--emacs",
-                        help="Specify whether or not to install emacs and plugins",
+                        help="Specify whether or to install emacs and plugins",
                         action="store_true")
 
     args = parser.parse_args()
     sys.exit(main())
 
 #  tic -o ~/.terminfo \
-        #/Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
+# /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
