@@ -1,5 +1,5 @@
 " Leader
-let mapleader = " "
+" let mapleader = ","
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nocompatible  " Use Vim settings, rather then Vi settings
@@ -28,6 +28,11 @@ filetype plugin indent on
 
 " map key for pep8 check; default is F5
 let g:pep8_map='<C-g>'
+
+" Enable folding by indentation
+setlocal foldmethod=indent
+noremap <Space> za
+noremap <C-@> zA
 
 augroup vimrcEx
   autocmd!
@@ -133,9 +138,6 @@ function! InsertTabWrapper()
     endif
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
