@@ -24,6 +24,10 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/tComment'
 Bundle 'chase/vim-ansible-yaml'
+"snippets
+Bundle 'msanders/snipmate.vim'
+Bunlde 'mitechie/pyflakes-pathogen'
+
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

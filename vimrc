@@ -23,6 +23,7 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+filetype on
 filetype plugin indent on
 
 augroup vimrcEx
