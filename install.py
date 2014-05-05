@@ -37,7 +37,7 @@ def installDotfiles():
                 os.symlink(os.getcwd()+'/'+each, target)
             except OSError as e:
                 print "OS error(%i): %s on file: %s" % (e.errno, e.strerror, target)
-    
+
 '''
 install emacs packages
 '''
@@ -116,10 +116,11 @@ def main():
         if OS in mac_os:
             installHomebrewCrap(homebrew_list)
         installDotfiles()
-    	if args.emacs:
-    	     installEmacsPackages(emacs_package_list)
-    	if args.gems:
-    	    installGems(gems_list, args.sudo)
+        if args.emacs:
+            print "NO FUCK YOU NO EMACS HERE"
+             # installEmacsPackages(emacs_package_list)
+        if args.gems:
+            installGems(gems_list, args.sudo)
     else:
         print 'Exiting per user command'
         sys.exit(0)
