@@ -30,9 +30,9 @@ filetype plugin indent on
 let g:pep8_map='<C-g>'
 
 " Enable folding by indentation
-setlocal foldmethod=indent
-noremap <Space> za
-noremap <C-@> zA
+" setlocal foldmethod=indent
+" noremap <Space> za
+" noremap <C-@> zA
 
 augroup vimrcEx
   autocmd!

@@ -6,6 +6,7 @@ import argparse
 import sys
 import os
 import subprocess
+import shutil
 
 # Global Variables and lists of crap
 mac_os = ['Darwin']
@@ -24,12 +25,12 @@ gems_list = ['puppet',
 # Symlinks in dotfiles
 def installDotfiles():
 
-    home = '~'
-    files_dir = os.getcwd()
+    home = os.environ['HOME']
+    files_dir = '.dotfiles'
     invalid_files_list = [".git",
                           "install.py"]
-
-    for each in os.listdir(files_dir):
+    print home+"/"+files_dir
+    for each in os.listdir(home+'/'+files_dir):
         if each not in invalid_files_list:
             target = home+'/.'+each
             try:
@@ -62,6 +63,18 @@ def installEmacsPackages(package_list):
                                 stdout=subprocess.PIPE,
                                 shell=True)
         proc.wait()
+
+
+# install vim packages
+def installVimPackages():
+    proc = subprocess.Popen("vim +BundleInstall +qall",
+                            stdout=subprocess.PIPE,
+                            shell=True)
+    proc.wait()
+    home = os.environ['HOME']
+    snipsDir = home+"/.vim/bundle/snipmate.vim/snippets"
+    if os.path.isdir(snipsDir):
+        shutil.rmtree(snipsDir)
 
 
 # Installs gems; Only want to call this on MacOs
@@ -113,7 +126,7 @@ def main():
     OS = subprocess.Popen('uname',
                           stdout=subprocess.PIPE).stdout.read().strip()
     print "OS detected as: %s" % OS
-    con_text = "Do you really want to blow away your old dotfiles? "
+    con_text = "Do you really want to blow away your old dotfiles [y/n]? "
     confirmation = raw_input(con_text)
 
     if confirmation == 'y' or confirmation == 'yes':
@@ -125,6 +138,8 @@ def main():
             # installEmacsPackages(emacs_package_list)
         if args.gems:
             installGems(gems_list, args.sudo)
+        if args.vim:
+            installVimPackages()
     else:
         print 'Exiting per user command'
         sys.exit(0)
@@ -134,17 +149,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--sudo",
-                        help="Specify whether or not to sudo certain installs",
+                        help="Sudo certain installs",
                         action="store_true")
 
     parser.add_argument("--gems",
-                        help="Specify whether or not to install gems",
+                        help="Install gems",
                         action="store_true")
 
     parser.add_argument("--emacs",
-                        help="Specify whether or to install emacs and plugins",
+                        help="Install emacs and plugins",
                         action="store_true")
-
+    parser.add_argument("--vim",
+                        help="Install vim plugins / dotfiles",
+                        action="store_true")
     args = parser.parse_args()
     sys.exit(main())
 
