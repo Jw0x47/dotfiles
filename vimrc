@@ -134,7 +134,7 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <leader><Tab> <c-r>=InsertTabWrapper()<cr>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
