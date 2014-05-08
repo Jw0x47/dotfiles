@@ -75,9 +75,11 @@ def installVimPackages(sudo):
                             shell=True)
     proc.wait()
     home = os.environ['HOME']
-    snipsDir = home+"/.vim/bundle/snipmate.vim/snippets"
-    if os.path.isdir(snipsDir):
-        shutil.rmtree(snipsDir)
+    conflictDirs = ["/.vim/bundle/snipmate.vim/snippets",
+                    "/vim/bundle/syntastic/syntax_checkers/puppet"]
+    for directory in conflictDirs:
+        if os.path.isdir(home+directory):
+            shutil.rmtree(home+directory)
     # pip install is here because they are dependancies for vim
     installPythonPackages(sudo)
 
