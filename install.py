@@ -17,9 +17,12 @@ emacs_package_list = ['rainbow-mode',
                       'solarized-theme']
 homebrew_list = ['wget',
                  'fortune']
+
 gems_list = ['puppet',
              'puppet-lint',
              'i2cssh']
+
+pip_list = ['flake8']
 
 
 # Symlinks in dotfiles
@@ -66,7 +69,7 @@ def installEmacsPackages(package_list):
 
 
 # install vim packages
-def installVimPackages():
+def installVimPackages(sudo):
     proc = subprocess.Popen("vim +BundleInstall +qall",
                             stdout=subprocess.PIPE,
                             shell=True)
@@ -75,11 +78,32 @@ def installVimPackages():
     snipsDir = home+"/.vim/bundle/snipmate.vim/snippets"
     if os.path.isdir(snipsDir):
         shutil.rmtree(snipsDir)
+    # pip install is here because they are dependancies for vim
+    installPythonPackages(sudo)
+
+
+def installPythonPackages(sudo):
+    for package in pip_list:
+        args = ['pip',
+                'install',
+                package]
+        if sudo:
+            s = 'sudo'
+            args = [s] + args
+            s = s+' '
+        else:
+            s = ''
+            print '%sInstalling %s' % (s, package)
+            proc = subprocess.Popen(args)
+            proc.wait()
+            if proc.returncode != 0:
+                print 'pip install failed what a fucking surprise'
+                sys.exit(1)
 
 
 # Installs gems; Only want to call this on MacOs
-def installGems(gem_list, sudo):
-    for gem in gem_list:
+def installGems(sudo):
+    for gem in gems_list:
         args = ['gem',
                 'install',
                 gem]
@@ -89,12 +113,9 @@ def installGems(gem_list, sudo):
             s = s+' '
         else:
             s = ''
-
             print '%sInstalling %s ' % (s, gem)
-
             proc = subprocess.Popen(args)
             proc.wait()
-
             if proc.returncode != 0:
                 print 'gem install failed'
                 sys.exit(1)
@@ -137,9 +158,9 @@ def main():
             print "NO FUCK YOU NO EMACS HERE"
             # installEmacsPackages(emacs_package_list)
         if args.gems:
-            installGems(gems_list, args.sudo)
+            installGems(args.sudo)
         if args.vim:
-            installVimPackages()
+            installVimPackages(args.sudo)
     else:
         print 'Exiting per user command'
         sys.exit(0)

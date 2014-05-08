@@ -26,13 +26,10 @@ endif
 filetype on
 filetype plugin indent on
 
-" map key for pep8 check; default is F5
-let g:pep8_map='<C-g>'
-
 " Enable folding by indentation
-" setlocal foldmethod=indent
-" noremap <Space> za
-" noremap <C-@> zA
+setlocal foldmethod=indent
+noremap <Space> za
+noremap <C-@> zA
 
 augroup vimrcEx
   autocmd!
@@ -163,6 +160,7 @@ nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
+let g:syntastic_python_checkers = ['flake8']
 
 " Remove trailing whitespace when a file is saved
 " Source: <http://vim.wikia.com/wiki/Remove_unwanted_spaces>
