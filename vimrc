@@ -17,6 +17,9 @@ set autowrite     " Automatically :write before running commands
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
+  set guifont=Inconsolata-dz\ for\ Powerline:h11
+  " set Ctrl-space for folds that doesn't work in iterm
+  noremap <C-Space> zA
 endif
 
 if filereadable(expand("~/.vimrc.bundles"))
@@ -65,18 +68,6 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 " Color scheme
 let iwantcolors=1
 let gitcolors=expand('~/.vim/colors/github.vim')
@@ -110,16 +101,22 @@ highlight Normal ctermbg=NONE
 highlight LineNr ctermfg=green
 
 if &term =~ '^xterm'
-  let &t_SI .= "\<Esc>[4 q"
+  let &t_SI .= "\<Esc>[5 q"
   let &t_EI .= "\<Esc>[2 q"
 endif
 
-" Numbers
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+" let g:airline_symbols.space = "\ua0"
+let
+
+
+
+" Line Numbers
 set number
 set numberwidth=5
-
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
 
 " Tab completion
 " will insert tab at beginning of line,

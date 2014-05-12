@@ -30,6 +30,7 @@ Bundle 'mitechie/pyflakes-pathogen'
 Bundle 'vim-scripts/pep8'
 Bundle 'godlygeek/tabular'
 Bundle 'rodjek/vim-puppet'
+Bundle 'bling/vim-airline'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
