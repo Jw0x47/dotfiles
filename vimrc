@@ -1,5 +1,5 @@
 " Leader
-" let mapleader = ","
+" let mapleader = "\"
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nocompatible  " Use Vim settings, rather then Vi settings
@@ -21,7 +21,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   " set Ctrl-space for folds that doesn't work in iterm
   noremap <C-Space> zA
 endif
-
+" install bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -88,17 +88,11 @@ if !filereadable(solarcolors)
   let iwantcolors=0
 endif
 
+" syntax & Colors
 syntax enable
 colorscheme solarized
-if has('gui_running')
-    set background=dark
-else
-    set background=dark
-endif
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
+set background=dark
 highlight Normal ctermbg=NONE
-highlight LineNr ctermfg=green
 
 if &term =~ '^xterm'
   let &t_SI .= "\<Esc>[5 q"
@@ -106,11 +100,11 @@ if &term =~ '^xterm'
 endif
 
 " Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='solarized'
-let g:airline_powerline_fonts = 1
-" let g:airline_symbols.space = "\ua0"
-let
+if has('gui_running')
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_theme='solarized'
+  let g:airline_powerline_fonts = 1
+endif
 
 
 
