@@ -24,8 +24,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/tComment'
 Bundle 'chase/vim-ansible-yaml'
-Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'vim-scripts/pep8'
 Bundle 'godlygeek/tabular'
 Bundle 'rodjek/vim-puppet'
 

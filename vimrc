@@ -99,15 +99,6 @@ if &term =~ '^xterm'
   let &t_EI .= "\<Esc>[2 q"
 endif
 
-" Airline
-if has('gui_running')
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_theme='solarized'
-  let g:airline_powerline_fonts = 1
-endif
-
-
-
 " Line Numbers
 set number
 set numberwidth=5
