@@ -27,7 +27,7 @@ Bundle 'chase/vim-ansible-yaml'
 Bundle 'godlygeek/tabular'
 Bundle 'rodjek/vim-puppet'
 
-"Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
