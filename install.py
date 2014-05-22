@@ -24,6 +24,14 @@ gems_list = ['puppet',
 
 pip_list = ['flake8']
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+
 
 # Symlinks in dotfiles
 def installDotfiles():
@@ -80,12 +88,12 @@ def installVimPackages(sudo, python):
     for directory in conflictDirs:
         if os.path.isdir(home+directory):
             shutil.rmtree(home+directory)
-    # pip install is here because they are dependancies for vim
-    if python:
-        installPythonPackages(sudo)
-
 
 def installPythonPackages(sudo):
+    if not sudo:
+        print bcolors.FAIL + '[ERROR] Cannont install python packages w/o sudo for pip!' + bcolors.ENDC
+        sys.exit(1)
+
     for package in pip_list:
         args = ['pip',
                 'install',
@@ -164,6 +172,8 @@ def main():
             installGems(args.sudo)
         if args.vim:
             installVimPackages(args.sudo, args.python)
+        if args.python:
+            installPythonPackages(args.sudo)
     else:
         print 'Exiting per user command'
         sys.exit(0)
@@ -185,6 +195,9 @@ if __name__ == '__main__':
                         action="store_true")
     parser.add_argument("--vim",
                         help="Install vim plugins / dotfiles",
+                        action="store_true")
+    parser.add_argument("--python",
+                        help="Install python dependencies",
                         action="store_true")
     args = parser.parse_args()
     sys.exit(main())
