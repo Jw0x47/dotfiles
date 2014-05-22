@@ -69,7 +69,7 @@ def installEmacsPackages(package_list):
 
 
 # install vim packages
-def installVimPackages(sudo):
+def installVimPackages(sudo, python):
     proc = subprocess.Popen("vim +BundleInstall +qall",
                             stdout=subprocess.PIPE,
                             shell=True)
@@ -81,7 +81,8 @@ def installVimPackages(sudo):
         if os.path.isdir(home+directory):
             shutil.rmtree(home+directory)
     # pip install is here because they are dependancies for vim
-    installPythonPackages(sudo)
+    if python:
+        installPythonPackages(sudo)
 
 
 def installPythonPackages(sudo):
@@ -162,7 +163,7 @@ def main():
         if args.gems:
             installGems(args.sudo)
         if args.vim:
-            installVimPackages(args.sudo)
+            installVimPackages(args.sudo, args.python)
     else:
         print 'Exiting per user command'
         sys.exit(0)
