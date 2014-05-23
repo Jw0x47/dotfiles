@@ -78,7 +78,7 @@ def installEmacsPackages(package_list):
 
 # install vim packages
 def installVimPackages(sudo, python):
-    proc = subprocess.Popen("vim +BundleInstall +qall",
+    proc = subprocess.Popen("vim +PluginInstall +qall",
                             stdout=subprocess.PIPE,
                             shell=True)
     proc.wait()
