@@ -3,5 +3,6 @@
 alias find='noglob find'
 alias gco='git checkout'
 alias gp='git pull --ff'
+alias sl='ls'
 
 [[ -f '/usr/local/Cellar/vim/7.4.052/bin/vim' ]] && alias vim='/usr/local/Cellar/vim/7.4.052/bin/vim'

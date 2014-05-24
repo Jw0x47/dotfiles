@@ -27,6 +27,7 @@ set numberwidth=5
 set splitbelow    " Open new split panes to right and bottom, which feels more natural
 set splitright    " Open new split panes to right and bottom, which feels more natural
 set runtimepath+=~/.vim/bundle/unite.vim/
+set autochdir     " automatically switch to dir of file you are edititng
 
 " ==== VUNDLE ===
   let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
