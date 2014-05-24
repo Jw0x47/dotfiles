@@ -28,6 +28,8 @@ set splitbelow    " Open new split panes to right and bottom, which feels more n
 set splitright    " Open new split panes to right and bottom, which feels more natural
 set runtimepath+=~/.vim/bundle/unite.vim/
 set autochdir     " automatically switch to dir of file you are edititng
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
 
 " ==== VUNDLE ===
   let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
@@ -54,14 +56,18 @@ set autochdir     " automatically switch to dir of file you are edititng
   Plugin 'godlygeek/tabular'
   Plugin 'rodjek/vim-puppet'
   Plugin 'Shougo/unite.vim'
+  Plugin 'Shougo/vimproc.vim'
   call vundle#end()
 
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
 " ==== Unite ====
-  nnoremap <C-P> :Unite file -start-insert<cr>
+  let g:unite_prompt='» '
+  let g:unite_data_directory='~/.vim/.cache/unite'
+  let g:unite_source_history_yank_enable=1
+  nnoremap <c-p> :Unite -auto-preview -vertical -start-insert file_rec/async<cr>
+  nnoremap <c-g> :Unite -auto-preview -vertical grep:.<cr>
+  nnoremap <c-y> :Unite history/yank<cr>
+
+  call unite#filters#sorter_default#use(['sorter_rank'])
   " let g:unite_source_history_yank_enable = 1
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   " nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
@@ -71,7 +77,7 @@ let g:html_indent_tags = 'li\|p'
   " nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
   " nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
-  " " Custom mappings for the unite buffer
+  " Custom mappings for the unite buffer
   " autocmd FileType unite call s:unite_settings()
   " function! s:unite_settings()
   "   " Play nice with supertab
@@ -80,6 +86,7 @@ let g:html_indent_tags = 'li\|p'
   "   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   "   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
   " endfunction
+
 " ==== Packages ====
   " install bundles
   if filereadable(expand("~/.vimrc.bundles"))
