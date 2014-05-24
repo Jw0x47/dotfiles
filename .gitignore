@@ -1,3 +1,2 @@
 bin/daily.brew
-vim/bundle/
-vim/colors
+vim/*
