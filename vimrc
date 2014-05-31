@@ -97,8 +97,8 @@ let g:html_indent_tags = 'li\|p'
   let iwantcolors=1
   let gitcolors=expand('~/.vim/colors/github.vim')
   let solarcolors=expand('~/.vim/colors/solarized.vim')
-  colorscheme solarized
-  set background=dark
+  " colorscheme solarized
+  "set background=dark
   highlight Normal ctermbg=NONE
 
   if !filereadable(gitcolors)
