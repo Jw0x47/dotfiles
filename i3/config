@@ -3,9 +3,16 @@
 #
 # Should you change your keyboard layout somewhen, delete
 # this file and re-run i3-config-wizard(1).
+#
+# colors
+client.focused          #150100 #fcf2cf #150100
+client.focused_inactive #150100 #150100 #150100
+client.unfocused        #150100 #150100 #150100
+client.urgent           #150100 #fcf2cf #150100
+client.background       #150100
 
 #### start multimonitor on my desktop
-# exec randr --output HDMI-0 --auto --output DVI-0 --auto --right-of HDMI-0
+exec ~/.i3/xrndr.sh
 
 # i3 config file (v4)
 #
