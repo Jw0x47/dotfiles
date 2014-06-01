@@ -12,7 +12,7 @@ client.urgent           #150100 #fcf2cf #150100
 client.background       #150100
 
 #### start multimonitor on my desktop
-exec ~/.i3/xrndr.sh
+exec ~/.i3/startup.sh
 
 # i3 config file (v4)
 #
