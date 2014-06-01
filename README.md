@@ -15,6 +15,14 @@ Install
 
 ./install.sh
 
+# ARCH - package name : command name
+* xorg     : ------   : Xserver, windows'n shit
+* xrandr   : xrandr   : Multihead screen manager
+* xcompmgr : xcompmgr : Xterm Transparency
+* Xterm    : xterm    : Terminal Emulator
+* i3       : startx   : TWM
+
+
 
 # Apps that I use
 * Iterm2 (terminal emulator)
