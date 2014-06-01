@@ -1,6 +1,8 @@
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
 
+[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+
 # completion
 autoload -U compinit
 compinit
