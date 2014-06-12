@@ -7,33 +7,12 @@ alias ls='ls --color=auto'
 alias l='ls'
 alias ll='ls -al'
 alias lh='ls -Alh'
-alias -g G='| grep'
-alias -g M='| less'
-alias -g L='| wc -l'
-alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
+# my additions
+alias find='noglob find'
+alias gco='git checkout'
+alias gp='git pull --ff'
+alias sl='ls'
 
-# git
-alias gci="git pull --rebase && rake && git push"
-
-# Bundler
-alias b="bundle"
-
-# Tests and Specs
-alias t="ruby -I test"
-alias cuc="bundle exec cucumber"
-
-# Rubygems
-alias gi="gem install"
-alias giv="gem install -v"
-
-# Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-alias m="migrate"
-alias rk="rake"
-alias s="rspec"
-alias z="zeus"
-
-# Include custom aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+[[ -f '/usr/local/Cellar/vim/7.4.052/bin/vim' ]] && alias vim='/usr/local/Cellar/vim/7.4.052/bin/vim'
