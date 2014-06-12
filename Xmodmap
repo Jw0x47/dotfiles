@@ -1,0 +1,4 @@
+! clears go at the top of the file
+clear Lock
+! keycode  66 = Caps_Lock NoSymbol Caps_Lock
+keycode 66 = Control_L NoSymbol Control_L
