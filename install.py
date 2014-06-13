@@ -36,7 +36,6 @@ class bcolors:
 
 # Symlinks in dotfiles
 def installDotfiles():
-
     home = os.environ['HOME']
     files_dir = '.dotfiles'
     invalid_files_list = [".git",
@@ -86,13 +85,13 @@ def installEmacsPackages(package_list):
 
 # install vim packages
 def installVimPackages(sudo, python):
+    print bcolors.OKBLUE + 'INFO: ~/.vim is not a symlink' + bcolors.ENDC
     proc = subprocess.Popen("vim +PluginInstall +qall",
                             stdout=subprocess.PIPE,
                             shell=True)
     proc.wait()
     home = os.environ['HOME']
-    conflictDirs = ["/.vim/bundle/snipmate.vim/snippets",
-                    "/vim/bundle/syntastic/syntax_checkers/puppet"]
+    conflictDirs = ["/vim/bundle/syntastic/syntax_checkers/puppet"]
     for directory in conflictDirs:
         if os.path.isdir(home+directory):
             shutil.rmtree(home+directory)
@@ -100,7 +99,8 @@ def installVimPackages(sudo, python):
 
 def installPythonPackages(sudo):
     if not sudo:
-        print bcolors.FAIL + '[ERROR] Cannont install python packages w/o sudo for pip!' + bcolors.ENDC
+        message = '[ERROR] Cannont install python packages w/o sudo for pip!'
+        print bcolors.FAIL + message + bcolors.ENDC
         sys.exit(1)
 
     for package in pip_list:
