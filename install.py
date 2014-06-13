@@ -40,7 +40,6 @@ def installDotfiles():
     files_dir = '.dotfiles'
     invalid_files_list = [".git",
                           "install.py"]
-    print home+"/"+files_dir
     for each in os.listdir(home+'/'+files_dir):
         if each not in invalid_files_list:
             target = home+'/.'+each
@@ -48,9 +47,11 @@ def installDotfiles():
             try:
                 os.remove(target)
             except OSError as e:
-                print "OS error(%i): %s on file %s" % (e.errno,
-                                                       e.strerror,
-                                                       target)
+                print bcolors.INFO
+                print "Error(%i): %s while removing file %s" % (e.errno,
+                                                                e.strerror,
+                                                                target)
+                print bcolors.ENDC
             try:
                 os.symlink(os.getcwd()+'/'+each, target)
             except OSError as e:
