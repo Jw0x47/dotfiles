@@ -3,6 +3,12 @@ hi tab whitebg
 " hi current greenfg
 " hi id yellowfg
 
+" Set the default tab
+set window library
+
+" Set the windows to show at startup
+set windows library,playlist
+
 set window playlist
 set autoscroll
 set colour
@@ -13,6 +19,7 @@ set sortignorethe
 set sortignorecase
 
 
+" Random Color Crap
 " hi tab blackbg
 " hi tab greenfg
 " hi status greenfg
