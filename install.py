@@ -24,6 +24,7 @@ gems_list = ['puppet',
 
 pip_list = ['flake8']
 
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -95,6 +96,7 @@ def installVimPackages(sudo, python):
     for directory in conflictDirs:
         if os.path.isdir(home+directory):
             shutil.rmtree(home+directory)
+
 
 def installPythonPackages(sudo):
     if not sudo:
