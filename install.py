@@ -47,7 +47,7 @@ def installDotfiles():
             try:
                 os.remove(target)
             except OSError as e:
-                print bcolors.INFO
+                print bcolors.OKBLUE
                 print "Error(%i): %s while removing file %s" % (e.errno,
                                                                 e.strerror,
                                                                 target)
@@ -86,7 +86,7 @@ def installEmacsPackages(package_list):
 
 # install vim packages
 def installVimPackages(sudo, python):
-    print bcolors.OKBLUE + 'INFO: ~/.vim is not a symlink' + bcolors.ENDC
+    print bcolors.OKBLUE + 'OKBLUE: ~/.vim is not a symlink' + bcolors.ENDC
     proc = subprocess.Popen("vim +PluginInstall +qall",
                             stdout=subprocess.PIPE,
                             shell=True)
