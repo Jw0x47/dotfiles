@@ -7,29 +7,42 @@
 ! stolen from... its a start
 ! https://gist.githubusercontent.com/yevgenko/1167205/raw/cadf24dd0163e769a21dcde81ce5ffa6688d1307/.Xdefaults
 
-XTerm*termName:            xterm-256color
-XTerm*saveLines:           9999
-XTerm.selectToClipboard:   True
+XTerm*.termName:            xterm-256color
+XTerm*.saveLines:           9999
+XTerm..selectToClipboard:   True
 !! Border
 xterm*borderWidth: 0
 
 ! ==Fonts==
-  !! Forbid bold font faces; bold type is light blue.
-  XTerm*colorBDMode: true
-  XTerm*colorBD: rgb:82/a4/d3
-  !! Do not underscore text, underlined text is white.
-  XTerm*colorULMode: true
-  XTerm*colorUL: rgb:e4/e4/e4  XTerm*locale:    true
-  !! Font / Size
-  XTerm*faceName:  Monaco_Linux
-  XTerm*faceSize:  10
+  !! == XTERM ==
+    !! Forbid bold font faces; bold type is light blue.
+    XTerm*.colorBDMode: true
+    XTerm*.colorBD: rgb:82/a4/d3
+    !! Do not underscore text, underlined text is white.
+    XTerm*.colorULMode: true
+    XTerm*.colorUL: rgb:e4/e4/e4  XTerm*locale:    true
+    !! Font / Size
+    XTerm*.faceName:  Monaco_Linux
+    XTerm*.faceSize:  10
+  !! == URXVT ==
+    !! fonts
+    URxvt*.font: xft:monaco:size=12:antialias=true
+    URxvt*.letterspace: -1
+
+
 
 !! ==Cursor==
-  XTerm*cursorBlink:      true
-  XTerm*cursorColor:      #0000FF
-  !! overridden by cursor_blink ? but that's fine
-  XTerm*cursorUnderline:  false
-  !! Pointer
+  !! == URXVT
+    !! transparency / scrollbars
+    URxvt*.depth: 32
+    URxvt*.background: [90]#AAAAAA
+    URxvt*.scrollBar: false
+  !! == XTERM
+    XTerm*cursorBlink:      true
+    XTerm*cursorColor:      #0000FF
+    !! overridden by cursor_blink ? but that's fine
+    XTerm*cursorUnderline:  false
+    !! Pointer
 
 !! ==COLORS==
   !!Source http://github.com/altercation/solarized
