@@ -49,7 +49,7 @@ setopt share_history
 
 # keep TONS of history
 export HISTSIZE=4096
-export SAVEHIST=1000
+export SAVEHIST=4096
 export HISTFILE=~/.zsh_history
 
 # automatically pushd
@@ -72,6 +72,3 @@ unsetopt nomatch
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
-
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
