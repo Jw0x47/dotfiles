@@ -11,10 +11,6 @@ import shutil
 # Global Variables and lists of crap
 mac_os = ['Darwin']
 linux_os = ['not Darwin']
-emacs_package_list = ['rainbow-mode',
-                      'evil',
-                      'evil-matchit',
-                      'solarized-theme']
 homebrew_list = ['wget',
                  'fortune']
 
@@ -58,30 +54,6 @@ def installDotfiles():
                 print "OS error(%i): %s on file: %s" % (e.errno,
                                                         e.strerror,
                                                         target)
-
-
-# install emacs packages
-def installEmacsPackages(package_list):
-    command_array = ["/Applications/Emacs.app/Contents/MacOS/Emacs",
-                     "--batch",
-                     "-l",
-                     "~/.dotfiles/emacs.packages",
-                     "--eval=\"(list-packages)\""]
-    proc = subprocess.Popen(' '.join(command_array),
-                            stdout=subprocess.PIPE,
-                            shell=True)
-    proc.wait()
-    for each in package_list:
-        print "Installing emacs package: %s" % each
-        app = "/Applications/Emacs.app/Contents/MacOS/Emacs"
-        flag = '--batch -l ~/.dotfiles/emacs.packages'
-        expr = "--eval=\"(package-install '%s)\"" % (each)
-        argsarray = [app, flag, expr]
-        print ' '.join(argsarray)
-        proc = subprocess.Popen(' '.join(argsarray),
-                                stdout=subprocess.PIPE,
-                                shell=True)
-        proc.wait()
 
 
 # install vim packages
