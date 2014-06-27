@@ -92,3 +92,5 @@ export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$f
 export PATH="$HOME/.bin:$PATH"
 daily
 welcome
+
+source ~/.zshrc.development
