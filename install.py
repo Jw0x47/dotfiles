@@ -183,6 +183,3 @@ if __name__ == '__main__':
                         action="store_true")
     args = parser.parse_args()
     sys.exit(main())
-
-#  tic -o ~/.terminfo \
-# /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti

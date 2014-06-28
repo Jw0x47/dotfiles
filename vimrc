@@ -205,3 +205,6 @@ let g:html_indent_tags = 'li\|p'
   autocmd! FileAppendPre * :call TrimWhiteSpace()
   autocmd! FilterWritePre * :call TrimWhiteSpace()
   autocmd! BufWritePre * :call TrimWhiteSpace()
+
+" === Powerline ===
+  set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
