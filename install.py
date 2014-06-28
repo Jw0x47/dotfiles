@@ -64,7 +64,8 @@ def installVimPackages(sudo, python):
                             shell=True)
     proc.wait()
     home = os.environ['HOME']
-    conflictDirs = ["/vim/bundle/syntastic/syntax_checkers/puppet"]
+    conflictDirs = ["/vim/bundle/syntastic/syntax_checkers/puppet",
+                    "/vim/bundle/sytastic/syntax_checkers/go"]
     for directory in conflictDirs:
         if os.path.isdir(home+directory):
             shutil.rmtree(home+directory)
