@@ -19,7 +19,6 @@ set shiftwidth=2  " move 2 tabs at a time
 set expandtab     " Tab turn into spaces
 set guifont=Inconsolata-dz\ for\ Powerline:h11 "set guifont=font\ name:height##
 filetype on       " Enable filetype detection
-filetype plugin indent on            " Makes filetype plugin stuff be buffer specific?
 set list listchars=tab:»·,trail:·    " Display extra whitespace
 setlocal foldmethod=indent           " Enable folding by indentation
 set number
@@ -33,12 +32,13 @@ let g:html_indent_tags = 'li\|p'
 
 " ==== VUNDLE ===
   let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+  filetype off
   if !filereadable(vundle_readme)
       echo "Installing Vundle.."
       echo ""
       silent !mkdir -p ~/.vim/bundle
       silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-      BundleInstall
+      PluginInstall
   endif
   set rtp+=~/.vim/bundle/vundle/
   call vundle#begin()
@@ -57,7 +57,11 @@ let g:html_indent_tags = 'li\|p'
   Plugin 'rodjek/vim-puppet'
   Plugin 'Shougo/unite.vim'
   Plugin 'Shougo/vimproc.vim'
+  Plugin 'fatih/vim-go'
+  Plugin 'Valloric/YouCompleteMe'
   call vundle#end()
+  "moving here cause broken shit
+  filetype plugin indent on            " Makes filetype plugin stuff be buffer specific?
 
 " ==== Unite ====
   let g:unite_prompt='» '
@@ -180,20 +184,9 @@ let g:html_indent_tags = 'li\|p'
     ''
   endfunction
 
-" ==== Tab completion ====
-  " will insert tab at beginning of line,
-  " will use completion if not at beginning
-  set wildmode=list:longest,list:full
-  set complete=.,w,t
-  function! InsertTabWrapper()
-      let col = col('.') - 1
-      if !col || getline('.')[col - 1] !~ '\k'
-          return "\<tab>"
-      else
-          return "\<c-p>"
-      endif
-  endfunction
-  inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+" === GO Configs ===
+  " needed to do `filetype off`
+  "  before vundle to get Go plugin to work
 
 " ==== Syntastic ===
   " configure syntastic syntax checking to check on open as well as save
