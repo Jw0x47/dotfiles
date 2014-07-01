@@ -1,0 +1,87 @@
+!-------------------------------------------------------------------------------
+! URxvt settings
+! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+!-------------------------------------------------------------------------------
+! stolen from... its a start
+! https://gist.githubusercontent.com/yevgenko/1167205/raw/cadf24dd0163e769a21dcde81ce5ffa6688d1307/.Xdefaults
+
+XTerm*.termName:            xterm-256color
+XTerm*.saveLines:           9999
+XTerm..selectToClipboard:   True
+!! Border
+xterm*borderWidth: 0
+
+! ==Fonts==
+  !! == XTERM ==
+    !! Forbid bold font faces; bold type is light blue.
+    XTerm*.colorBDMode: true
+    XTerm*.colorBD: rgb:82/a4/d3
+    !! Do not underscore text, underlined text is white.
+    XTerm*.colorULMode: true
+    XTerm*.colorUL: rgb:e4/e4/e4  XTerm*locale:    true
+    !! Font / Size
+    XTerm*.faceName:  Monaco_Linux
+    XTerm*.faceSize:  10
+  !! == URXVT ==
+    !! fonts
+    URxvt*.font: xft:monaco:size=12:antialias=true
+    URxvt*.letterspace: -1
+
+
+
+!! ==Cursor==
+  !! == URXVT
+    !! transparency / scrollbars
+    URxvt*.depth: 32
+    URxvt*.background: [90]#AAAAAA
+    URxvt*.scrollBar: false
+  !! == XTERM
+    XTerm*cursorBlink:      true
+    XTerm*cursorColor:      #0000FF
+    !! overridden by cursor_blink ? but that's fine
+    XTerm*cursorUnderline:  false
+    !! Pointer
+
+!! ==COLORS==
+  !!Source http://github.com/altercation/solarized
+  !! *background: #002b36
+  !! *foreground: #657b83
+  !! !!*fading: 40
+  !! *fadeColor: #002b36
+  !! *cursorColor: #93a1a1
+  !! *pointerColorBackground: #586e75
+  !! *pointerColorForeground: #93a1a1
+  !!
+  !! !! black dark/light
+  !! *color0: #073642
+  !! *color8: #002b36
+  !!
+  !! !! red dark/light
+  !! *color1: #dc322f
+  !! *color9: #cb4b16
+  !!
+  !! !! green dark/light
+  !! *color2: #859900
+  !! *color10: #586e75
+  !!
+  !! !! yellow dark/light
+  !! *color3: #b58900
+  !! *color11: #657b83
+  !!
+  !! !! blue dark/light
+  !! *color4: #268bd2
+  !! *color12: #839496
+  !!
+  !! !! magenta dark/light
+  !! *color5: #d33682
+  !! *color13: #6c71c4
+  !!
+  !! !! cyan dark/light
+  !! *color6: #2aa198
+  !! *color14: #93a1a1
+  !!
+  !! !! white dark/light
+  !! *color7: #eee8d5
+  !! *color15: #fdf6e3

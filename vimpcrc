@@ -1,0 +1,39 @@
+hi tab whitebg
+" hi status blackbg
+" hi current greenfg
+" hi id yellowfg
+
+" Set the default tab
+set window library
+
+" Set the windows to show at startup
+set windows library,playlist
+
+set window playlist
+set autoscroll
+set colour
+set hlsearch
+set searchwrap
+set ignorecase
+set sortignorethe
+set sortignorecase
+
+
+" Random Color Crap
+" hi tab blackbg
+" hi tab greenfg
+" hi status greenfg
+" hi status blackbg
+" hi status whitefg
+" hi status greenfg
+" hi song redfg
+" hi id
+" hi dir blackfg
+" hi current bluefg
+" hi progress yellowfg
+" hi match
+" hi partial
+" hi full
+" hi pager redfg
+" hi status
+" hi error
