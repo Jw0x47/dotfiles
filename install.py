@@ -12,6 +12,7 @@ import shutil
 mac_os = ['Darwin']
 linux_os = ['not Darwin']
 homebrew_list = ['wget',
+                 'vim',
                  'fortune']
 
 gems_list = ['puppet',
@@ -147,6 +148,7 @@ def main():
     if confirmation == 'y' or confirmation == 'yes':
         if OS in mac_os:
             installHomebrewCrap(homebrew_list)
+            print 'Move your /usr/local/bin; to the front of your path for BREW'
         installDotfiles()
         if args.emacs:
             print "NO FUCK YOU NO EMACS HERE"

@@ -57,7 +57,6 @@ let g:html_indent_tags = 'li\|p'
   Plugin 'rodjek/vim-puppet'
   Plugin 'Shougo/unite.vim'
   Plugin 'Shougo/vimproc.vim'
-  Plugin 'fatih/vim-go'
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'SirVer/ultisnips'
   call vundle#end()
