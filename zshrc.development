@@ -1,0 +1,3 @@
+export GOROOT=~/.langs/go
+export GOPATH=~/git/go.workspace
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

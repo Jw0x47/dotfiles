@@ -1,7 +1,0 @@
-[alias]
-[format]
-  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
-[user]
-  email = jonathanwgoodwin@gmail.com
-  name = Jonathan W Goodwin
-
