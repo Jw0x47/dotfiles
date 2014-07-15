@@ -64,9 +64,13 @@ def installVimPackages(sudo, python):
                             stdout=subprocess.PIPE,
                             shell=True)
     proc.wait()
+
+
+def removeVimConflicts():
     home = os.environ['HOME']
-    conflictDirs = ["/vim/bundle/syntastic/syntax_checkers/puppet",
-                    "/vim/bundle/sytastic/syntax_checkers/go"]
+    conflictDirs = ["/.vim/bundle/syntastic/syntax_checkers/puppet",
+                    "/.vim/bundle/syntastic/syntax_checkers/go",
+                    "/.vim/bundle/syntastic/syntax_checkers/coffee"]
     for directory in conflictDirs:
         if os.path.isdir(home+directory):
             shutil.rmtree(home+directory)
@@ -148,7 +152,7 @@ def main():
     if confirmation == 'y' or confirmation == 'yes':
         if OS in mac_os:
             installHomebrewCrap(homebrew_list)
-            print 'Move your /usr/local/bin; to the front of your path for BREW'
+            print 'Move /usr/local/bin; to the front of your path for BREW'
         installDotfiles()
         if args.emacs:
             print "NO FUCK YOU NO EMACS HERE"
@@ -157,6 +161,8 @@ def main():
             installGems(args.sudo)
         if args.vim:
             installVimPackages(args.sudo, args.python)
+        if args.vim_clean:
+            removeVimConflicts()
         if args.python:
             installPythonPackages(args.sudo)
     else:
@@ -183,6 +189,9 @@ if __name__ == '__main__':
                         action="store_true")
     parser.add_argument("--python",
                         help="Install python dependencies",
+                        action="store_true")
+    parser.add_argument("--vim_clean",
+                        help="Clean Vim syntastic",
                         action="store_true")
     args = parser.parse_args()
     sys.exit(main())

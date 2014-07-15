@@ -17,7 +17,7 @@ syntax enable
 set tabstop=2     " Softtabs, 2 spaces
 set shiftwidth=2  " move 2 tabs at a time
 set expandtab     " Tab turn into spaces
-set guifont=Inconsolata-dz\ for\ Powerline:h11 "set guifont=font\ name:height##
+set guifont=Monaco\ for\ Powerline:h12 "set guifont=font\ name:height##
 filetype on       " Enable filetype detection
 set list listchars=tab:»·,trail:·    " Display extra whitespace
 setlocal foldmethod=indent           " Enable folding by indentation
@@ -51,6 +51,7 @@ let g:html_indent_tags = 'li\|p'
   Plugin 'tpope/vim-endwise'
   Plugin 'tpope/vim-fugitive'
   Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-fireplace'
   " Plugin 'vim-scripts/tComment'
   Plugin 'chase/vim-ansible-yaml'
   Plugin 'godlygeek/tabular'
@@ -200,7 +201,9 @@ let g:html_indent_tags = 'li\|p'
   autocmd! BufWritePre * :call TrimWhiteSpace()
 
 " === Powerline ===
-  set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+  python from powerline.vim import setup as powerline_setup
+  python powerline_setup()
+  python del powerline_setup
   if ! has('gui_running')
       set ttimeoutlen=10
       augroup FastEscape
