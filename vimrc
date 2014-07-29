@@ -53,6 +53,7 @@ let g:html_indent_tags = 'li\|p'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-fireplace'
   " Plugin 'vim-scripts/tComment'
+  Plugin 'vim-coffee-script'
   Plugin 'chase/vim-ansible-yaml'
   Plugin 'godlygeek/tabular'
   Plugin 'rodjek/vim-puppet'
@@ -211,4 +212,5 @@ let g:html_indent_tags = 'li\|p'
           au InsertEnter * set timeoutlen=0
           au InsertLeave * set timeoutlen=1000
       augroup END
-  endif
+    endif
+
