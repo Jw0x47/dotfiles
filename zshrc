@@ -97,3 +97,4 @@ welcome
 # source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 source ~/.zshrc.development
+[ -f /Users/jgoodwin/.profile ] && source /Users/jgoodwin/.profile
