@@ -1,5 +1,7 @@
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
+# hubspot bullshit
+fpath=(/opt/boxen/homebrew/share/zsh/site-functions $fpath)
 
 [ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
 
@@ -89,12 +91,13 @@ setopt prompt_subst
 export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
 
 # load dotfiles scripts (daily)
-export PATH="$HOME/.bin:$PATH"
+export PATH="/Users/jgoodwin/Library/Python/2.7/bin:$HOME/.bin:$PATH"
 daily
 welcome
 
 # Powerline
-# source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh/
+source /Users/jgoodwin/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
 source ~/.zshrc.development
 [ -f /Users/jgoodwin/.profile ] && source /Users/jgoodwin/.profile

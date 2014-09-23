@@ -61,6 +61,7 @@ let g:html_indent_tags = 'li\|p'
   Plugin 'Shougo/vimproc.vim'
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'SirVer/ultisnips'
+  Plugin 'digitaltoad/vim-jade'
   call vundle#end()
   "moving here cause broken shit
   filetype plugin indent on            " Makes filetype plugin stuff be buffer specific?
