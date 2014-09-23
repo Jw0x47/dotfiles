@@ -26,8 +26,8 @@ xterm*borderWidth: 0
     XTerm*.faceSize:  10
   !! == URXVT ==
     !! fonts
-    URxvt*.font: xft:monaco:size=12:antialias=true
-    URxvt*.letterspace: -1
+    URxvt*.font: xft:Monaco for Powerline:size=8:antialias=true
+    !! URxvt*.letterspace: -1
 
 
 
