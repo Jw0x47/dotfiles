@@ -1,7 +1,5 @@
 Dotfiles
 ===================
-Requirements
-------------
 Recommended for awesomeness (though not required)
 Set zsh as your login shell.
     chsh -s /bin/zsh
@@ -27,7 +25,6 @@ Install
 * xcompmgr            : xcompmgr     : Xterm Transparency
 * zsh                 : zsh
 * git                 : git          : git
-* python2             : python2      : install script written in py2
 * gvim                : vim          : comes with python installed
 * cmake               : cmake        : for YouCompleteMe
 * wget                : wget         : dotfiles want it

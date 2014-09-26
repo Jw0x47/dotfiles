@@ -1,0 +1,35 @@
+[push]
+  default = current
+[color]
+  ui = auto
+[alias]
+  st = status
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+[merge]
+  ff = only
+[include]
+  path = .gitconfig.local
+[commit]
+  template = ~/.gitmessage
+[format]
+   # pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+[hub]
+  protocol = https
+  host = git.hubteam.com
+{% if hubspot %}
+[user]
+  email = jgoodwin@hubspot.com
+  name = Jonathan Goodwin
+[credential]
+  helper = /opt/boxen/bin/boxen-git-credential
+[core]
+  excludesfile = /opt/boxen/config/git/gitignore
+{% else %}
+[user]
+  email = JonathanWGoodwin@gmail.com
+  name = Jonathan W Goodwin
+{% endif %}
+

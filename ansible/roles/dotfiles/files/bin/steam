@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export DL_AUDIODRIVER=alsa
+(/usr/bin/steam &) && exit

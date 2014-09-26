@@ -1,0 +1,12 @@
+---
+# install dotfiles
+- hosts: localhost
+  vars:
+    var: value
+    user: jgoodwin
+    homedir: /Users/jgoodwin # /tmp/scratch
+    hubspot: true
+  roles:
+    - dotfiles
+  tasks:
+    -  debug: var=ansible_os_family
