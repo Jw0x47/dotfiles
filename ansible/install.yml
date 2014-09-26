@@ -1,0 +1,10 @@
+---
+# install dotfiles
+# usage: ansible-playbook install.yml -i hosts --extra-vars="homedir:/full/path/to/my/home/dir"
+# other variables:
+  #   hubspot: [ true | false ] (for work related configs )
+- hosts: localhost
+  vars:
+    hubspot: false
+  roles:
+    - dotfiles
