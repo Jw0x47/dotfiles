@@ -1,0 +1,27 @@
+#!/bin/bash
+WD=/Users/jgoodwin/dev/src/hubspot_static_daemon/
+
+function start () {
+  cd $WD
+  ./hs-static run &> $WD/hssd.out &
+  echo 'starting'
+}
+
+function stop () {
+  echo 'stopping'
+  set -x
+  pkill -lf rails
+  set +x
+}
+
+function restart () {
+  start
+  stop
+}
+
+case $1 in
+  start) start ;;
+  stop) stop ;;
+  restart) restart ;;
+
+esac

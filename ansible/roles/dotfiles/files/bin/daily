@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+
+
+
+function run_brew_update() {
+  echo -n 'Brew update not run in 24 hours run brew update now? [y/n] '
+  read ans
+  if [ "$ans" == 'y' ]
+  then
+    echo running brew update
+    brew update
+    exit_code=$?
+    echo "[$(date)] Brew update run exit code was $exit_code" >> ~/.dotfiles/bin/daily.brew
+    exit $exit_code
+  else
+    echo Not running brew update
+    echo "[$(date)] Brew update not run" >> ~/.dotfiles/bin/daily.brew
+    exit 0
+  fi
+
+}
+
+if [ "$(find ~/.dotfiles/bin -name 'daily.brew' -mmin +1440 |wc -l)" -eq '1' ]
+then
+  run_brew_update
+else
+  exit 0
+fi
+
