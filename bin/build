@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Find and set the variables from the project
-BUILDROOT=$(git rev-parse --show-toplevel)
-BUILDENV=$BUILDROOT/.buildenv
-source $BUILDENV
-
-eval $BUILD_CMD $@
-unset BUILD_CMD
