@@ -1,0 +1,5 @@
+#!/bin/bash
+export STEAM_FRAME_FORCE_CLOSE=1 steam
+export force_s3tc_enable=true
+export DL_AUDIODRIVER=alsa
+(/usr/bin/steam -sw &)

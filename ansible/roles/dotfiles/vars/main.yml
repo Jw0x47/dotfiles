@@ -1,0 +1,32 @@
+---
+homebrew_packages:
+  - wget
+  - vim
+  - fortune
+
+gems:
+  - i2cssh # OSX only
+
+
+vim_conflict_files:
+  - .vim/bundle/syntastic/syntax_checkers/puppet
+  - .vim/bundle/syntastic/syntax_checkers/go
+  - .vim/bundle/syntastic/syntax_checkers/coffee
+
+pacman_packages:
+  - xorg
+  - xrandr
+  - zsh
+  - git
+  - gvim
+  - cmake
+  - wget
+  - rsync
+  - i3
+  - "xorg-server"
+  - "xorg-xrandr"
+  - "rxvt-unicode"
+  - chromium
+  - pacaur
+  - htop
+  - feh
