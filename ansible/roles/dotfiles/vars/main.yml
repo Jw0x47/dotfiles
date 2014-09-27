@@ -15,7 +15,6 @@ vim_conflict_files:
 
 pacman_packages:
   - xorg
-  - xrandr
   - zsh
   - git
   - gvim

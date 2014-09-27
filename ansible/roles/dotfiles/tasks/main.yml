@@ -35,13 +35,14 @@
   when: ansible_os_family == "Darwin"
   with_items: gems
 
-# Install vim packages
-- shell: vim +PluginInstall +qall
-
 - file: state=absent path={{ homedir }}/{{ item }}
   with_items: vim_conflict_files
 
 # Pacman
 - pacman: name={{ item }} state=present update_cache=yes
+  sudo: true
   with_items: pacman_packages
   when: ansible_os_family != "Darwin"
+
+# Install vim packages
+- shell: vim +PluginInstall +qall
