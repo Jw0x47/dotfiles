@@ -27,9 +27,8 @@ xterm*borderWidth: 0
 
   ! == URXVT ==
     ! fonts
-    ! URxvt*.letterspace: -10
     URxvt*.font: xft:Monaco for Powerline:size=8:antialias=true
-
+    URxvt.boldfont:xft:Monaco_Linux:bold:size=8:antialias=true
 
 
 ! ==Cursor==
