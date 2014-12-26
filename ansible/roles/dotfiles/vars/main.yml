@@ -14,18 +14,17 @@ vim_conflict_files:
   - .vim/bundle/syntastic/syntax_checkers/coffee
 
 pacman_packages:
-  - xorg
   - zsh
   - git
   - gvim
   - cmake
   - wget
   - rsync
-  - i3
-  - "xorg-server"
-  - "xorg-xrandr"
-  - "rxvt-unicode"
-  - chromium
-  - pacaur
   - htop
   - feh
+  - networkmanager
+  - gnome # the UI package group
+  - "gnome-tweak-tool"
+  - sudo # required for pacaur
+  - expac # required for pacaur
+  # - pacaur # This is installed from the AUR; depends on AUR packages

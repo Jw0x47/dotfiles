@@ -38,8 +38,11 @@
 - file: state=absent path={{ homedir }}/{{ item }}
   with_items: vim_conflict_files
 
-# Pacman
-- pacman: name={{ item }} state=present update_cache=yes
+# Pacman (remove vim so gvim installs, update cache 1 time)
+- pacman: name="vim" state=absent update_cache=yes
+  when: ansible_os_family != "Darwin"
+
+- pacman: name={{ item }} state=present
   sudo: true
   with_items: pacman_packages
   when: ansible_os_family != "Darwin"
