@@ -17,8 +17,8 @@ syntax enable
 set tabstop=2     " Softtabs, 2 spaces
 set shiftwidth=2  " move 2 tabs at a time
 set expandtab     " Tab turn into spaces
-set guifont=Monaco\ for\ Powerline:h12 "set guifont=font\ name:height##
-filetype on       " Enable filetype detection
+set guifont=Monaco\ for\ Powerline "set guifont=font\ name:height## " cant use :h10 on for (gvim on arch & gnome3)
+set t_Co=256  "Fixes issue where powerline bar doesn't have colors (X-term on arch & gnome3)filetype on       " Enable filetype detection
 set list listchars=tab:»·,trail:·    " Display extra whitespace
 setlocal foldmethod=indent           " Enable folding by indentation
 set number
