@@ -21,10 +21,11 @@ pacman_packages:
   - wget
   - rsync
   - htop
-  - feh
   - networkmanager
-  - gnome # the UI package group
-  - "gnome-tweak-tool"
   - sudo # required for pacaur
   - expac # required for pacaur
+  - i3
+  - networkmanager
+  - "nm-applet"
+  - dmenu
   # - pacaur # This is installed from the AUR; depends on AUR packages
