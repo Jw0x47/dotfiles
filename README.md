@@ -27,3 +27,8 @@ If you have pacman brace yourself; it will install window managers and the like.
 * Dropbox
 
 # Arch apps are in the variables file
+
+# Random Notes:
+
+- `/etc/sysctl.d/20-quiet-printk.conf` contains `kernel.printk = 3 3 3 3` to
+  prevent various logs from printing to tty1 on boot.
