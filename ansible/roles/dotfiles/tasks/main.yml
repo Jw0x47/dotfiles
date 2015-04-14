@@ -2,7 +2,7 @@
 ## The files
 - copy: src={{ item}} dest={{ homedir }}/.{{ item | basename }}  mode=644
   with_fileglob:
-    - ./*
+    - ./default/*
 
 - template: src=vimrc.j2 dest={{ homedir }}/.vimrc mode=644
 - template: src=aliases.j2 dest={{ homedir }}/.aliases mode=644
@@ -16,11 +16,11 @@
 - file: path={{ homedir }}/.i3 state=directory mode=755
   when: ansible_os_family != "Darwin"
 
-- copy: dest={{ homedir }}/.config src=roles/dotfiles/files/config/
-- copy: dest={{ homedir }}/.bin src=roles/dotfiles/files/bin/
-- copy: dest={{ homedir }}/.vim src=roles/dotfiles/files/vim/
-- copy: dest={{ homedir }}/.zsh src=roles/dotfiles/files/zsh/
-- copy: dest={{ homedir }}/.i3 src=roles/dotfiles/files/i3/
+- copy: dest={{ homedir }}/.config src=roles/dotfiles/files/default/config/
+- copy: dest={{ homedir }}/.bin src=roles/dotfiles/files/default/bin/
+- copy: dest={{ homedir }}/.vim src=roles/dotfiles/files/default/vim/
+- copy: dest={{ homedir }}/.zsh src=roles/dotfiles/files/default/zsh/
+- copy: dest={{ homedir }}/.i3 src=roles/dotfiles/files/default/i3/
   when: ansible_os_family != "Darwin"
 
 # make everything in .bin 755

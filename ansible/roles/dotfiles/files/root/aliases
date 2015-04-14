@@ -1,0 +1,18 @@
+# Unix
+alias tlf="tail -f"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
+alias ls='ls --color=auto'
+alias l='ls'
+alias ll='ls -al'
+alias lh='ls -Alh'
+alias e="$EDITOR"
+alias v="$VISUAL"
+# my additions
+alias find='noglob find'
+alias gco='git checkout'
+alias gp='git pull --ff'
+alias sl='ls'
+alias build='source build'
+

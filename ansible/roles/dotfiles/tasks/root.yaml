@@ -1,0 +1,11 @@
+---
+- copy: src={{ item}} dest=/root/.{{ item | basename }}  mode=644
+  sudo: yes
+  with_fileglob:
+    - ./root/*
+
+- file: path={{ homedir }}/.vim  state=directory mode=755
+- file: path={{ homedir }}/.zsh  state=directory mode=755
+- copy: dest={{ homedir }}/.vim src=roles/dotfiles/files/default/vim/
+- copy: dest={{ homedir }}/.zsh src=roles/dotfiles/files/default/zsh/
+
