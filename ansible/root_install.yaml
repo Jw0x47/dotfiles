@@ -2,5 +2,6 @@
 - hosts: localhost
   sudo: yes
   vars: []
-  roles:
-    - root
+  tasks:
+    - name: "..."
+      include: roles/dotfiles/tasks/root.yaml
